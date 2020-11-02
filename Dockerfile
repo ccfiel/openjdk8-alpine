@@ -21,15 +21,6 @@ RUN apk update && apk upgrade && apk --update add \
     libc6-compat \    
     libstdc++ tzdata bash ca-certificates \
     &&  echo 'gem: --no-document' > /etc/gemrc
-
-RUN apk update && apk add --no-cache \
-  ruby \
-  ruby-bundler \
-  ruby-bigdecimal \
-	ruby-dev \
-	build-base \
-  libssl1.1 \
-  libc6-compat
           
 RUN pip3 install firebase-admin
 RUN pip3 install google-cloud-storage
