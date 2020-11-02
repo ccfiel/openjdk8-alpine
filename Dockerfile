@@ -5,6 +5,8 @@ LABEL maintainer="ccfiel@bai.ph" version="2.0.2"
 RUN apk update
 RUN apk upgrade
 RUN apk add wget tar unzip bash
+RUN apk add --virtual build-dependencies build-base gcc wget git
+
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
 RUN python3 -m ensurepip
