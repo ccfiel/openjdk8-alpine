@@ -8,9 +8,10 @@ RUN apk add wget tar unzip bash
 RUN apk add --virtual build-dependencies build-base gcc wget git
 
 ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
+RUN apk add --no-cache --virtual .build-deps g++ python3-dev libffi-dev openssl-dev && \
+    apk add --no-cache --update python3 && \
+    pip3 install --upgrade pip setuptools
+RUN pip3 install pendulum service_identity
 
 RUN apk update && apk upgrade && apk --update add \
     ruby ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
@@ -18,9 +19,9 @@ RUN apk update && apk upgrade && apk --update add \
     &&  echo 'gem: --no-document' > /etc/gemrc
 
           
-RUN pip install firebase-admin
-RUN pip install google-cloud-storage
-RUN pip install google-cloud-firestore
+RUN pip3 install firebase-admin
+RUN pip3 install google-cloud-storage
+RUN pip3 install google-cloud-firestore
 RUN gem install fastlane -NV
 RUN gem install google-api-client
           
