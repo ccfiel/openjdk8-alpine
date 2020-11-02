@@ -5,11 +5,10 @@ LABEL maintainer="ccfiel@bai.ph" version="2.0.2"
 RUN apk update
 RUN apk upgrade
 RUN apk add wget tar unzip bash
-RUN apk add --virtual build-dependencies build-base gcc wget git
+RUN apk add --virtual build-dependencies build-base gcc wget git python3-dev
 
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN apk add python3-dev add build-base gcc
 RUN python3 -m ensurepip
 RUN pip3 install --no-cache --upgrade pip setuptools
 
