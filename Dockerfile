@@ -17,9 +17,8 @@ RUN apk update && apk upgrade && apk --update add \
     ruby ruby-irb ruby-rake ruby-io-console ruby-bigdecimal ruby-json ruby-bundler \
 	ruby-dev \
 	build-base \
-    libssl1.1 \
-    libc6-compat \    
-    libstdc++ tzdata bash ca-certificates \
+    libssl1.1 \  
+    libstdc++ tzdata ca-certificates \
     &&  echo 'gem: --no-document' > /etc/gemrc
           
 RUN pip3 install firebase-admin
