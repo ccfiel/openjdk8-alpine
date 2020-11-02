@@ -5,7 +5,8 @@ LABEL maintainer="ccfiel@bai.ph" version="2.0.2"
 RUN apk update
 RUN apk upgrade
 RUN apk add wget tar unzip bash
-RUN apk add --virtual build-dependencies build-base gcc wget git python3-dev
+RUN apk add --virtual build-dependencies build-base gcc wget git 
+RUN apk add libffi-dev python3-dev openssl-dev
 
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
